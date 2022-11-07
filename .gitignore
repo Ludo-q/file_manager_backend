@@ -1,0 +1,11 @@
+# Distribution / packaging
+.Python
+env/
+venv/
+
+# Static files
+media/
+
+.idea/
+
+db.sqlite3
