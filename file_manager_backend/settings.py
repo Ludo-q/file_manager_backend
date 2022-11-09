@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-bi0dcw6p-b^!w8^$z4_!k@-$j9-vac%iid@psk7+l^_ys5v=73
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'knox',
+    'file_manager_backend.apps.accounts'
 ]
 
 MIDDLEWARE = [
@@ -98,6 +101,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# Django rest framework
+# https://www.django-rest-framework.org/api-guide/authentication/
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 
 
 # Internationalization
