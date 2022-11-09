@@ -2,12 +2,14 @@ from django.contrib.auth import login
 
 from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
+
 from knox.views import LoginView as KnoxLoginView
 
 
 class LoginView(KnoxLoginView):
     print('class LoginView(KnoxLoginView):')
     permission_classes = (permissions.AllowAny,)
+    authentication_classes = []
 
     def post(self, request, format=None):
         print('class LoginView(KnoxLoginView), def post(self, request, format=None):')
@@ -17,3 +19,5 @@ class LoginView(KnoxLoginView):
         user = serializer.validated_data['user']
         login(request, user)
         return super(LoginView, self).post(request, format=None)
+
+
