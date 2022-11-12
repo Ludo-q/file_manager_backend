@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User, Group
 from django.contrib.auth import login
 
 from rest_framework import permissions
@@ -19,5 +20,3 @@ class LoginView(KnoxLoginView):
         user = serializer.validated_data['user']
         login(request, user)
         return super(LoginView, self).post(request, format=None)
-
-
