@@ -1,0 +1,87 @@
+<style>
+    .list {
+        background-color: aqua;
+        font-size: 20px;
+    }
+
+    .list__item {
+        padding: 20px;
+    }
+
+    .list__item:not(:last-of-type) {
+        margin-bottom: 20px;
+    }
+
+    .list--error {
+        background-color: red;
+        color: white;
+    }
+
+    .title {
+        text-align: center;
+        padding: 50px;
+        background-color: darkblue;
+        color: white;
+    }
+
+    .title__h1 {
+        font-size: 25px;
+        letter-spacing: 3px;
+        margin: 0;
+    }
+
+    .sub-title {
+        padding: 30px;
+    }
+
+    .sub-title__h2 {
+        font-size: 20px;
+    }
+
+    .description {
+        border-left: 5px solid darkblue;
+    }
+
+    .description__p {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+
+</style>
+<div class="title">
+    <h1 class="title__h1">
+        {{ app_title }}
+    </h1>
+</div>
+<div class="sub-title">
+    <h2 class="sub-title__h2">
+        {{ option_name }}
+    </h2>
+</div>
+<h3>
+    Rezultati
+</h3>
+<ol class="list">
+    {% for file in files %}
+        <li class="list__item">
+            {{ file }}
+        </li>
+    {% empty %}
+        <li>
+            Veprimi nuk dha asnje rezultat
+        </li>
+    {% endfor %}
+</ol>
+
+<h3>
+    Gabimet
+</h3>
+<ol class="list--error">
+    {% for error in errors %}
+        <li class="list__item">
+            {{ error }}
+        </li>
+    {% empty %}
+        Veprimi nuk dha asnje gabim
+    {% endfor %}
+</ol>
